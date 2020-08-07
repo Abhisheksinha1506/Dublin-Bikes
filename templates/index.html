@@ -1,129 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <head>
+    <link
+      crossorigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-ie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-    <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/style.css" rel="stylesheet" type="text/css" />
     <title>Dublin Bikes Map</title>
-</head>
-<body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="../static/b.png"></a>
+          <a class="navbar-brand" href="/"><img src="../static/b.png" /></a>
 
-            <div class="navbar-collapse" id="navbarsExample07">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <div class="nav-link nav-size"><p>Check your</p></div>
-                    </li>
+          <div class="navbar-collapse" id="navbarsExample07">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <div class="nav-link nav-size"><p>Check your</p></div>
+              </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link nav-size" href="http://www.dublinbikes.ie/">Dublin bikes</a>
-                    </li>
-                </ul>
-                <h3 class="navbar-brand">Search Station Number:</h3>
-                <form class="form-inline my-2 my-md-0" method="POST" action="/"> <!--Action invoked when user input a station number-->
-                    <input aria-label="Search" class="form-control" placeholder="Search" type="number"
-                           name="Station_No">
-		            <input type="submit" name="submit" value="Submit" class="btn btn-info">
-	</form>
-            </div>
+              <li class="nav-item">
+                <a class="nav-link nav-size" href="http://www.dublinbikes.ie/"
+                  >Dublin bikes</a
+                >
+              </li>
+            </ul>
+            <h3 class="navbar-brand">Search Station Number:</h3>
+            <form class="form-inline my-2 my-md-0" method="POST" action="/">
+              <!--Action invoked when user input a station number-->
+              <input
+                aria-label="Search"
+                class="form-control"
+                placeholder="Search"
+                type="number"
+                name="Station_No"
+              />
+              <input
+                type="submit"
+                name="submit"
+                value="Submit"
+                class="btn btn-info"
+              />
+            </form>
+          </div>
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<main>
-    <!--Weather widget----------------------------------------------------------------->
-        <a class="weatherwidget-io" href="https://forecast7.com/en/53d35n6d26/dublin/" data-label_1="DUBLIN" data-label_2="WEATHER" data-theme="original" >DUBLIN WEATHER</a>
+    <main>
+      <!--Weather widget----------------------------------------------------------------->
+      <a
+        class="weatherwidget-io"
+        href="https://forecast7.com/en/53d35n6d26/dublin/"
+        data-label_1="DUBLIN"
+        data-label_2="WEATHER"
+        data-theme="original"
+        >DUBLIN WEATHER</a
+      >
 
-    <!--Google map implementation-------------------------------------------------------->
-    <script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-    <div class="map" id="map"></div>
+      <!--Google map implementation-------------------------------------------------------->
+      <script>
+        !(function (d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0];
+          if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://weatherwidget.io/js/widget.min.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        })(document, "script", "weatherwidget-io-js");
+      </script>
+      <div class="map" id="map"></div>
 
-    <!--Graphs ---------------------------------------------------------------->
-<div id="if">
-    <!--Past data graph-------------------------------------------------->
-    <script> var graph_data_past = {{  graph_data_past | safe }};</script>
-    <div class="chart">
-        <canvas id="myChart1" height="80"></canvas>
-    </div>
+      <!--Graphs ---------------------------------------------------------------->
+      <div id="if">
+        <!--Past data graph-------------------------------------------------->
+        <script>
+          var graph_data_past = {{  graph_data_past | safe }};
+        </script>
+        <div class="chart">
+          <canvas id="myChart1" height="80"></canvas>
+        </div>
 
-    <!--Prediction data graph-------------------------------------------->
-    <script> var graph_data_future = {{ graph_data_future | safe }};</script>
-    <div class="chart">
-        <canvas id="myChart2" height="80"></canvas>
-    </div>
+        <!--Prediction data graph-------------------------------------------->
+        <script>
+          var graph_data_future = {{ graph_data_future | safe }};
+        </script>
+        <div class="chart">
+          <canvas id="myChart2" height="80"></canvas>
+        </div>
 
         <script src="../static/chart.js"></script>
 
-    <!--Alert messages depending on station searched------------------------------------->
-</div>
-    {% if graph_data_past == null %}
-    <div class="alert alert-danger" role="alert">
+        <!--Alert messages depending on station searched------------------------------------->
+      </div>
+      {% if graph_data_past == null %}
+      <div class="alert alert-danger" role="alert">
         <h4>No Predictions Made, Please Search by Station Number</h4>
-    </div>
-    {% endif %}
+      </div>
+      {% endif %} {% if graph_data_past != null %}
+      <script>
+        document.getElementById("if").style.display = "block";
+      </script>
+      <div class="alert alert-success" role="alert">
+        <h4>
+          Next PREDICTION for Station number {{graph_data_future[0][3]}} is:
+          <strong>{{graph_data_future[0][0]}}</strong>
+        </h4>
+      </div>
 
-    {% if graph_data_past != null %}
-    <script>document.getElementById('if').style.display = "block";</script>
-    <div class="alert alert-success" role="alert">
-        <h4>Next PREDICTION for Station number {{graph_data_future[0][3]}} is:
-            <strong>{{graph_data_future[0][0]}}</strong></h4>
-    </div>
-
-    {% endif %}
-
-
-</main>
-<!--Footer --------------------------------------------------------------------------->
-<footer>
-    <span class="footdiv">
+      {% endif %}
+    </main>
+    <!--Footer --------------------------------------------------------------------------->
+    <footer>
+      <span class="footdiv">
         <h2 class="footsec">FAST</h2>
-        <p class="descrip">Just Eat dublinbikes stations are distributed throughout the city
-            centre to enable easy access and optimal use. Located in close proximity to each
-            other, every station has a minimum of 15 stands in situ making it easy to enjoy the
-            service. </p>
-    </span>
-    <span class="footdiv">
+        <p class="descrip">
+          Just Eat dublinbikes stations are distributed throughout the city
+          centre to enable easy access and optimal use. Located in close
+          proximity to each other, every station has a minimum of 15 stands in
+          situ making it easy to enjoy the service.
+        </p>
+      </span>
+      <span class="footdiv">
         <h2 class="footsec">RELIABLE</h2>
-        <p class="descrip">Just Eat dublinbikes is a self-service bike rental system open to
-            everyone from 14 years of age. It enables you to travel through the city centre,
-            commute between home and work and get out and about to enjoy Dublin city at your
-            leisure.</p>
-    </span>
-    <span class="footdiv">
+        <p class="descrip">
+          Just Eat dublinbikes is a self-service bike rental system open to
+          everyone from 14 years of age. It enables you to travel through the
+          city centre, commute between home and work and get out and about to
+          enjoy Dublin city at your leisure.
+        </p>
+      </span>
+      <span class="footdiv">
         <h2 class="footsec">CHEAP</h2>
-        <p class="descrip">You can enjoy the many benefits of an Annual Card for just €25.
-            A 3 Day Ticket costs €5. The first 30 minutes of use is free on every bike. After
-            this first half-hour, a service charge applies. The cheapest way to get around
-            Dublin</p>
-    </span>
-    <span class="footdiv">
+        <p class="descrip">
+          You can enjoy the many benefits of an Annual Card for just €25. A 3
+          Day Ticket costs €5. The first 30 minutes of use is free on every
+          bike. After this first half-hour, a service charge applies. The
+          cheapest way to get around Dublin
+        </p>
+      </span>
+      <span class="footdiv">
         <h2 class="footsec">SAFE</h2>
-        <p class="descrip">As is proper safety practice, the bikes are regularly serviced
-            to ensure they are fit for their intended use at all times. Additionally
-            your personal details are kept secured at all times and will never be compromised.</p>
-    </span>
+        <p class="descrip">
+          As is proper safety practice, the bikes are regularly serviced to
+          ensure they are fit for their intended use at all times. Additionally
+          your personal details are kept secured at all times and will never be
+          compromised.
+        </p>
+      </span>
 
-    <div class="copy">Copyright&copy: Aidan O'Hora, Abhishek Sinha and Miguel Martinez</div>
+      <div class="copy">
+        Copyright&copy: Aidan O'Hora, Abhishek Sinha and Miguel Martinez
+      </div>
+    </footer>
+  </body>
 
-</footer>
-</body>
+  <script>
+    var data = {{ place_markers | safe }};
+  </script>
 
-
-<script> var data = {{ place_markers | safe }}; </script>
-
-<!--Google maps key---------and reference to js file------------------------------------------>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUUtoAUApYxHvPVCN6SxFtaJSVcplSXNI&callback=initMap"
-        type="text/javascript"></script>
-<script src="../static/map.js"></script>
-
+  <!--Google maps key---------and reference to js file------------------------------------------>
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUUtoAUApYxHvPVCN6SxFtaJSVcplSXNI&callback=initMap"
+    type="text/javascript"
+  ></script>
+  <script src="../static/map.js"></script>
 </html>

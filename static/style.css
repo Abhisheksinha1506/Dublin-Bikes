@@ -1,112 +1,108 @@
 html {
-    width: 100%;
+  width: 100%;
 }
-
 
 /*header------------------------------------------------------------*/
 .nav-size {
-    font-size: 25px;
-    color: rgba(255,255,255,.75);
+  font-size: 25px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 header {
-    border-bottom: 10px solid black;
+  border-bottom: 10px solid black;
 }
-
 
 /*Main ------------------------------------------------------------------------*/
 main {
-    margin: 0px;
-    border-bottom: 10px solid black;
+  margin: 0px;
+  border-bottom: 10px solid black;
 }
 
 .stationName {
-    font-weight: bold;
-    text-align: center;
-    padding: 5px;
-    font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
 }
 
 .stationStats {
-    font-weight: bold;
-    font-size: 15px;
-    text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
 }
 
 .map {
-    border-top: 10px solid black;
-    border-bottom: 10px solid black;
-    margin: 0;
-    padding: 0;
-    height: 600px;
-    width: 100%;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  margin: 0;
+  padding: 0;
+  height: 600px;
+  width: 100%;
 }
 
 #if {
-    display: none;
+  display: none;
 }
 
 .chart {
-    position: relative;
-    display: inline-block;
-    margin: auto;
-    width: 49vw;
+  position: relative;
+  display: inline-block;
+  margin: auto;
+  width: 49vw;
 }
 
-
-
 @media (max-width: 1200px) {
-    .chart {
-        width: 98vw;
-    }
+  .chart {
+    width: 98vw;
+  }
 }
 
 .alert {
-    text-align: center!important;
-    margin: 0px!important;
+  text-align: center !important;
+  margin: 0px !important;
 }
 
 /*Footer -------------------------------------------------------------------------*/
 footer {
-    width: 100%;
-    background-color: #313b44;
-    border-bottom: 10px solid black;
-    height: 70%;
+  width: 100%;
+  background-color: #313b44;
+  border-bottom: 10px solid black;
+  height: 70%;
 }
 
 .footdiv {
-    position: relative;
-    display: inline-block;
-    margin-left: 10px;
-    margin-top: 8px;
-    padding: 0;
-    width: 24%;
-    background-color: inherit;
-    color: #fff;
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 8px;
+  padding: 0;
+  width: 24%;
+  background-color: inherit;
+  color: #fff;
 }
 
 @media (max-width: 1350px) {
-    .footdiv {
-        width: 48%;
-        margin: auto;
-    }
+  .footdiv {
+    width: 48%;
+    margin: auto;
+  }
 }
 
 .footsec {
-    padding-top: 5px;
-    text-align: center;
+  padding-top: 5px;
+  text-align: center;
 }
 
 .descrip {
-    text-align: center;
-    padding: 3px;
+  text-align: center;
+  padding: 3px;
 }
 
 .copy {
-    border-top: 2px solid black;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 100%;
-    color: #717171;
-    text-align: center;
+  border-top: 2px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  color: #717171;
+  text-align: center;
 }
